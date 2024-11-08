@@ -71,9 +71,30 @@ Instructions for Deployment and Testing
     
     2. Run Tests:
     
-    Run the tests using Jest:
+        Run the tests using Jest:
+        
+            npx jest
     
-        npx jest
+        This will execute the unit tests for the likeArticle function, for scenarios like missing data, successful writes, and handling server errors.
 
-    This will execute the unit tests for the likeArticle function, for scenarios like missing data, successful writes, and handling server errors.
+    3. Testing with Postman:
+        
+        Endpoint: POST http://localhost:5001/{project-id}/us-central1/likeArticle
+        
+        Headers: Content-Type: application/json
+        
+        Body:
+        
+        {
+          "userId": "user1",
+          "articleId": "article1"
+        }
+        
+        Expected Response:
+        
+        On success: 200 OK with message "Article liked successfully".
+        
+        On missing fields: 400 Bad Request with message "Missing userId or articleId".
+        
+        On server error: 500 Internal Server Error.
 
